@@ -1,9 +1,9 @@
 {
-  "name": "ponytail-chunks",
+  "name": "better-code",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Ponytail with a verification gate: build in chunks, run each one, trust no output you did not see.",
+  "description": "Ponytail with a verification gate: build in steps, run each one, trust no output you did not see.",
   "keywords": ["pi-package"],
   "license": "MIT",
   "scripts": {

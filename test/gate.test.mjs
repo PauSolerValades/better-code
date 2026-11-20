@@ -4,7 +4,7 @@ import { mkdtempSync, writeFileSync, rmSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { isCodeProject } from "../extensions/ponytail-chunks.ts";
+import { isCodeProject } from "../extensions/better-code.ts";
 
 const made = [];
 const dir = () => {
@@ -18,14 +18,14 @@ test("gate: code markers open it, a bare directory does not", () => {
   assert.equal(isCodeProject(bare), false);
   writeFileSync(join(bare, "package.json"), "{}");
   assert.equal(isCodeProject(bare), true);
-  assert.equal(isCodeProject("/nonexistent-ponytail-chunks-dir"), false);
+  assert.equal(isCodeProject("/nonexistent-better-code-dir"), false);
 });
 
 test("rules path still resolves and has a body", () => {
-  const file = fileURLToPath(new URL("../skills/ponytail-chunks/SKILL.md", import.meta.url));
+  const file = fileURLToPath(new URL("../skills/better-code/SKILL.md", import.meta.url));
   const raw = readFileSync(file, "utf8");
   const body = raw.replace(/^---[\s\S]*?---\s*/, "");
-  assert.match(body, /One chunk at a time/);
+  assert.match(body, /One step at a time/);
   // A ": " inside a plain YAML scalar makes the whole frontmatter unparseable,
   // and pi then drops the skill without a word. Cost me one silent no-load.
   const description = raw.match(/^description: (.*)$/m)?.[1] ?? "";
